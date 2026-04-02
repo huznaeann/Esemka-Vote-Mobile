@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.esemkavotemobile.api.LoginAPI
+import com.esemkavotemobile.api.AuthAPI
 import com.esemkavotemobile.databinding.ActivityLoginBinding
 import com.esemkavotemobile.model.LoginRequest
 import com.esemkavotemobile.parser.AuthParser
@@ -38,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             )
 
             thread {
-                val response = LoginAPI.login(request)
+                val response = AuthAPI.login(request)
                 runOnUiThread {
                     if (response.data.isEmpty()) {
                         setAlertDialog("Warning", response.message)

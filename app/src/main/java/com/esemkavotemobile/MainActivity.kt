@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity(), VotingHeaderAdapter.setClickListener {
         }
 
         token = intent.getStringExtra("token")!!
-
+    }
+    override fun onStart() {
+        super.onStart()
         thread {
             val response = VotingHeaderAPI.getAllVotingHeader(token)
             val votingHeaders = VotingHeaderParser.responseToVotingHeader(response)
